@@ -1,5 +1,5 @@
-import React, {Component} from "react";
-import Button from '@material-ui/core/Button';
+import React from "react";
+import DateButton from './DateButton';
 import {withStyles} from '@material-ui/core/styles';
 
 const style = theme => ({
@@ -9,28 +9,14 @@ const style = theme => ({
     }
 });
 
-class DateGroup extends Component {
-
-    onClick = (e) => {
-    };
-
-    render() {
-        const {classes} = this.props;
-        let buttons = [
-            "Week", "Month", "Quarter", "Year", "Max"
-        ];
-        let current = "Month";
-        return (
-            <div className={classes.root}>
-                {buttons.map((item, index) => (
-                    <Button onClick={this.onClick} key={index} disabled={item === current} size="small">
-                        {item}
-                    </Button>
-                ))}
-            </div>
-        )
-    }
-
-}
+const DateGroup = ({classes, items}) => {
+    return (
+        <div className={classes.root}>
+            {items.map((item, index) => (
+                <DateButton key={index} filter={item.filter} label={item.label}/>
+            ))}
+        </div>
+    )
+};
 
 export default withStyles(style)(DateGroup);

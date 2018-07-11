@@ -6,6 +6,7 @@ import DateGroup from './DateGroup';
 import TypeGroup from './TypeGroup';
 import Chart from './Chart';
 import {withStyles} from '@material-ui/core/styles';
+import {DateFilter, TypeFilter} from "./actions/index";
 
 let style = theme => ({
     paper: {
@@ -18,10 +19,23 @@ let style = theme => ({
     typeGroup: {
         position: "absolute",
         top: 270,
-        left: 335
+        right: 80
     }
 });
 
+const dateData = [
+    {label: "Week", filter: DateFilter.WEEK},
+    {label: "Month", filter: DateFilter.MONTH},
+    {label: "Quarter", filter: DateFilter.QUARTER},
+    {label: "Year", filter: DateFilter.YEAR},
+    {label: "Max", filter: DateFilter.MAX}
+];
+
+const typeData = [
+    {label: 'Yield', filter: TypeFilter.YIELD},
+    {label: 'Price', filter: TypeFilter.PRICE},
+    {label: 'Spread', filter: TypeFilter.SPREAD},
+];
 
 class Card extends Component {
 
@@ -35,10 +49,10 @@ class Card extends Component {
                 01.04.2016</Typography>
             <Divider/>
             <div className={classes.group}>
-                <DateGroup/>
+                <DateGroup items={dateData}/>
                 <Chart/>
                 <div className={classes.typeGroup}>
-                    <TypeGroup/>
+                    <TypeGroup items={typeData}/>
                 </div>
             </div>
         </Paper>

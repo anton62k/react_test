@@ -1,20 +1,29 @@
-import React, {Component} from "react";
+import React from "react";
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-import {withStyles} from '@material-ui/core/styles';
+import {setTypeFilter} from "./actions/index";
+import {connect} from 'react-redux';
 
-const style = theme => ({});
 
-class TypeGroup extends Component {
+const TypeGroup = ({filter, items, onChange}) => {
+    return <Select value={filter} onChange={(e) => onChange(e.target.value)}>
+        {items.map((item, index) => (
+            <MenuItem key={index}
+                      value={item.filter}>
+                {item.label}
+            </MenuItem>
+        ))}
+    </Select>
+};
 
-    render() {
-        return <Select value="yield">
-            <MenuItem value="yield">Yield</MenuItem>
-            <MenuItem value="spread">Spread</MenuItem>
-            <MenuItem value="price">Price</MenuItem>
-        </Select>
+const mapStateToProps = (state, ownProps) => ({
+    filter: state.typeFilter
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    onChange: (filter) => {
+        dispatch(setTypeFilter(filter))
     }
+});
 
-}
-
-export default withStyles(style)(TypeGroup);
+export default connect(mapStateToProps, mapDispatchToProps)(TypeGroup);

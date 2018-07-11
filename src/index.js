@@ -1,9 +1,19 @@
+import './index.css';
+import "typeface-roboto";
+import registerServiceWorker from './registerServiceWorker';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import {createStore} from "redux";
 import App from './App';
-import registerServiceWorker from './registerServiceWorker';
-import "typeface-roboto";
+import cardReducer from './card/reducers';
+import {Provider} from "react-redux";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const store = createStore(cardReducer);
+
+ReactDOM.render(
+    <Provider store={store}>
+        <App/>
+    </Provider>,
+    document.getElementById('root')
+);
 registerServiceWorker();
