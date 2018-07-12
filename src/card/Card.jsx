@@ -50,7 +50,6 @@ const Card = ({ classes }) => (
       <Grid container alignContent="center" justify="center">
         <DateGroup items={dateData} />
       </Grid>
-
       <Chart />
       <div className={classes.typeGroup}>
         <TypeGroup items={typeData} />
