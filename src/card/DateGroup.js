@@ -1,6 +1,6 @@
 import React from "react";
-import DateButton from './DateButton';
 import {withStyles} from '@material-ui/core/styles';
+import DateButton from './DateButton';
 
 const style = theme => ({
     root: {

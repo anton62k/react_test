@@ -3,12 +3,14 @@ import "typeface-roboto";
 import registerServiceWorker from './registerServiceWorker';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {createStore} from "redux";
+import {createStore, applyMiddleware} from "redux";
+import thunk from "redux-thunk";
 import App from './App';
 import cardReducer from './card/reducers';
 import {Provider} from "react-redux";
+import {fetchISIN} from "./card/actions/index";
 
-const store = createStore(cardReducer);
+const store = createStore(cardReducer, applyMiddleware(thunk));
 
 ReactDOM.render(
     <Provider store={store}>
@@ -17,3 +19,5 @@ ReactDOM.render(
     document.getElementById('root')
 );
 registerServiceWorker();
+
+store.dispatch(fetchISIN());

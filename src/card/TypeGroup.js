@@ -1,8 +1,8 @@
 import React from "react";
+import {connect} from 'react-redux';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-import {setTypeFilter} from "./actions/index";
-import {connect} from 'react-redux';
+import {fetchISIN, selectTypeFilter} from './actions/index';
 
 
 const TypeGroup = ({filter, items, onChange}) => {
@@ -22,7 +22,8 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     onChange: (filter) => {
-        dispatch(setTypeFilter(filter))
+        dispatch(selectTypeFilter(filter));
+        dispatch(fetchISIN());
     }
 });
 

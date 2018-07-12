@@ -1,7 +1,7 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
 import {connect} from 'react-redux';
-import {setDateFilter} from "./actions/index";
+import Button from '@material-ui/core/Button';
+import {fetchISIN, selectDateFilter} from './actions/index';
 
 const DateButton = ({label, disabled, onClick}) => {
     return <Button disabled={disabled} size='small' onClick={() => onClick()}>
@@ -15,7 +15,8 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
     onClick: () => {
-        dispatch(setDateFilter(ownProps.filter));
+        dispatch(selectDateFilter(ownProps.filter));
+        dispatch(fetchISIN());
     }
 });
 

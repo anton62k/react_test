@@ -1,7 +1,9 @@
 import {combineReducers} from 'redux';
-import dateFilter from './DateFilter';
-import typeFilter from './TypeFilter';
+import dateFilter from './dateFilter';
+import typeFilter from './typeFilter';
+import isFetching from './isFetching';
+import data from './data';
 
 export default combineReducers({
-    typeFilter, dateFilter
+    typeFilter, dateFilter, isFetching, data
 });
