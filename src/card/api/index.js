@@ -1,7 +1,8 @@
 import makeResponse from './response';
 
 const api = (dateFilter, typeFilter) => new Promise((resolve) => {
-  setTimeout(resolve, 500, makeResponse(dateFilter, typeFilter));
+  const delay = 500;
+  setTimeout(resolve, delay, makeResponse(dateFilter, typeFilter));
 });
 
 export default api;
