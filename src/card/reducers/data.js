@@ -1,16 +1,13 @@
-import {RECEIVE_ISIN} from "../actions/index";
+import { RECEIVE_ISIN } from '../actions/index';
 
 const data = (state = [], action) => {
+  switch (action.type) {
+    case RECEIVE_ISIN:
+      return action.data.data;
 
-    switch (action.type) {
-
-        case RECEIVE_ISIN:
-            return action.data.data;
-
-        default:
-            return state;
-    }
-
+    default:
+      return state;
+  }
 };
 
 export default data;

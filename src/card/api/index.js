@@ -1,7 +1,7 @@
-import {makeResponse} from "./response";
+import makeResponse from './response';
 
-export function api(dateFilter, typeFilter) {
-    return new Promise(resolve => {
-        setTimeout(resolve, 500, makeResponse(dateFilter, typeFilter));
-    });
-}
+const api = (dateFilter, typeFilter) => new Promise((resolve) => {
+  setTimeout(resolve, 500, makeResponse(dateFilter, typeFilter));
+});
+
+export default api;
