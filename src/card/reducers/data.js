@@ -5,7 +5,7 @@ const data = (state = [], action) => {
     switch (action.type) {
 
         case RECEIVE_ISIN:
-            return action.data;
+            return action.data.data;
 
         default:
             return state;

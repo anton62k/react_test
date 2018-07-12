@@ -19,8 +19,15 @@ const rangeValue = {
 };
 
 export function makeResponse(dateFilter, typeFilter) {
-    return testDate[dateFilter].map(item => ({
-        name: item,
-        value: baseValue[typeFilter] + rangeValue[typeFilter] * Math.random().toFixed(1)
-    }));
+    return {
+        texts: {
+            title: 'NII CAPITAL 7.625 21',
+            text1: 'US67021BAE92',
+            text2: 'NII CAPITAL CORP, Telecommunication, NR, till 01.04.2016'
+        },
+        data: testDate[dateFilter].map(item => ({
+            name: item,
+            value: baseValue[typeFilter] + rangeValue[typeFilter] * Math.random().toFixed(1)
+        }))
+    };
 }
