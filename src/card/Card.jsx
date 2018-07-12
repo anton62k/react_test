@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
@@ -57,5 +58,9 @@ const Card = ({ classes }) => (
     </div>
   </Paper>
 );
+
+Card.propTypes = {
+  classes: PropTypes.objectOf(PropTypes.object).isRequired,
+};
 
 export default withStyles(style)(Card);

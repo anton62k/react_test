@@ -1,15 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import { fetchISIN, selectTypeFilter } from './actions/index';
 
-
 const TypeGroup = ({ filter, items, onChange }) => (
   <Select value={filter} onChange={e => onChange(e.target.value)}>
-    {items.map((item, index) => (
+    {items.map(item => (
       <MenuItem
-        key={index}
+        key={item.filter}
         value={item.filter}
       >
         {item.label}
@@ -18,7 +18,13 @@ const TypeGroup = ({ filter, items, onChange }) => (
   </Select>
 );
 
-const mapStateToProps = (state) => ({
+TypeGroup.propTypes = {
+  filter: PropTypes.string.isRequired,
+  items: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onChange: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = state => ({
   filter: state.typeFilter,
 });
 

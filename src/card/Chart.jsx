@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import {
@@ -21,9 +22,14 @@ const Chart = ({ classes, data }) => (
   </LineChart>
 );
 
+Chart.propTypes = {
+  classes: PropTypes.objectOf(PropTypes.object).isRequired,
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
+
 const StyleChart = withStyles(style)(Chart);
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   data: state.data,
 });
 
