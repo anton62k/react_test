@@ -15,11 +15,11 @@ export const selectTypeFilter = filter => ({
   filter,
 });
 
-const requestISIN = () => ({
+export const requestISIN = () => ({
   type: REQUEST_ISIN,
 });
 
-const receiveISIN = data => ({
+export const receiveISIN = data => ({
   type: RECEIVE_ISIN,
   data,
 });
